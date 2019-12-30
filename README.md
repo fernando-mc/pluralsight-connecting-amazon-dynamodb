@@ -1,0 +1,1 @@
+This code is for the Pluralsight Course - Connecting DynamoDB to your Applications.
