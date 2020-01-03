@@ -9,8 +9,8 @@
        '{{random("Celadon", "Celadon", "Celadon", "Celeste", "Celtic", "Cerise", "Cerulean", "Cerulean", "Cerulean", "Cerulean", "CG", "CG", "Champagne", "Champagne", "Charcoal", "Charleston", "Charm", "Chartreuse", "Chartreuse", "Cherry", "Chestnut", "China", "China", "Chinese", "Chinese", "Chinese", "Chocolate", "Chocolate", "Chrome", "Cinereous", "Cinnabar", "Cinnamon", "Citrine", "Citron", "Claret", "Cobalt", "Cocoa", "Coffee", "Columbia", "Congo", "Cool", "Copper", "Copper", "Copper", "Copper", "Copper", "Coquelicot", "Coral", "Coral", "Cordovan", "Corn", "Cornflower", "Cornsilk", "Cosmic", "Cosmic", "Coyote", "Cotton", "Cream", "Crimson", "Crimson", "Cultured", "Cyan", "Cyan", "Cyber", "Cyber", "Cyclamen", "Dark", "Dark", "Dark", "Dark", "Dark", "Dartmouth", "Davy", "Deep", "Denim", "Desert", "Dim", "Dodger", "Dogwood", "Drab", "Duke", "Dutch", "Earth", "Ebony", "Ecru", "Eerie", "Eggplant", "Eggshell", "Egyptian", "Electric", "Emerald", "Eminence", "English", "English", "Erin", "Eton", "Fallow", "Falu", "Fandango", "Fandango", "Fashion", "Fawn", "Feldgrau", "Fern", "Field", "Fiery", "Firebrick", "Fire", "Fire", "Flame", "Flax", "Flickr", "Flirt", "Floral", "Fluorescent", "Forest", "Frostbite", "Fuchsia", "Fulvous", "Fuzzy", "November", "December", "May", "March", "Fever", "Sunday", "Monday", "Poetic")}}',
       id: '{{guid()}}',
       priceUsdCents: '{{integer(99, 399)}}',
-      publisher: '{{company().toUpperCase()}}',
-   },
+      publisher: '{{company().toUpperCase()}}'
+   }
   },
   {
     'repeat(10, 20)': {
@@ -21,7 +21,7 @@
        '{{random("Celadon", "Celadon", "Celadon", "Celeste", "Celtic", "Cerise", "Cerulean", "Cerulean", "Cerulean", "Cerulean", "CG", "CG", "Champagne", "Champagne", "Charcoal", "Charleston", "Charm", "Chartreuse", "Chartreuse", "Cherry", "Chestnut", "China", "China", "Chinese", "Chinese", "Chinese", "Chocolate", "Chocolate", "Chrome", "Cinereous", "Cinnabar", "Cinnamon", "Citrine", "Citron", "Claret", "Cobalt", "Cocoa", "Coffee", "Columbia", "Congo", "Cool", "Copper", "Copper", "Copper", "Copper", "Copper", "Coquelicot", "Coral", "Coral", "Cordovan", "Corn", "Cornflower", "Cornsilk", "Cosmic", "Cosmic", "Coyote", "Cotton", "Cream", "Crimson", "Crimson", "Cultured", "Cyan", "Cyan", "Cyber", "Cyber", "Cyclamen", "Dark", "Dark", "Dark", "Dark", "Dark", "Dartmouth", "Davy", "Deep", "Denim", "Desert", "Dim", "Dodger", "Dogwood", "Drab", "Duke", "Dutch", "Earth", "Ebony", "Ecru", "Eerie", "Eggplant", "Eggshell", "Egyptian", "Electric", "Emerald", "Eminence", "English", "English", "Erin", "Eton", "Fallow", "Falu", "Fandango", "Fandango", "Fashion", "Fawn", "Feldgrau", "Fern", "Field", "Fiery", "Firebrick", "Fire", "Fire", "Flame", "Flax", "Flickr", "Flirt", "Floral", "Fluorescent", "Forest", "Frostbite", "Fuchsia", "Fulvous", "Fuzzy", "November", "December", "May", "March", "Fever", "Sunday", "Monday", "Poetic")}}',
       id: '{{guid()}}',
       priceUsdCents: '{{integer(99, 399)}}',
-      publisher: '{{random("GLOBOMANTICS MUSIC", "MUSICMAN INC")}}',
-   },
+      publisher: '{{random("GLOBOMANTICS MUSIC", "MUSICMAN INC")}}'
+   }
   }
 ]
