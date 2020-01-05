@@ -24,7 +24,7 @@ functions:
           cors: true
           request:
             schema:
-              application/json: ${file(models/create_request.json)}
+              application/json: ${file(backend/models/surveySchema.json)}
   getSurvey:
     handler: backend/get_survey.handler
     events:
@@ -53,3 +53,7 @@ functions:
           path: /surveys/{id}/responses
           method: post
           cors: true
+          request:
+            schema:
+              application/json: ${file(backend/models/responseSchema.json)}
+
