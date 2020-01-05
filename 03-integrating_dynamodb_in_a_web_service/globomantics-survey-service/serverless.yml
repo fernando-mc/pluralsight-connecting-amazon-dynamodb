@@ -1,0 +1,55 @@
+service: globomantics-survey-service
+
+provider:
+  name: aws
+  runtime: python3.8
+  region: us-east-1
+  environment:
+    DYNAMODB_TABLE: ${self:service}-${opt:stage, self:provider.stage}-surveys
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:Scan
+        - dynamodb:Query
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+      Resource: "arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:provider.environment.DYNAMODB_TABLE}"
+functions:
+  createSurvey:
+    handler: backend/create_survey.handler
+    events:
+      - http:
+          path: /surveys
+          method: post
+          cors: true
+          request:
+            schema:
+              application/json: ${file(models/create_request.json)}
+  getSurvey:
+    handler: backend/get_survey.handler
+    events:
+      - http:
+          path: /surveys/{id}
+          method: get
+          cors: true
+  getCustomerSurveys:
+    handler: backend/get_customer_surveys.handler
+    events:
+      - http:
+          path: /customers/{id}/surveys
+          method: get
+          cors: true
+  getSurveyResponses:
+    handler: backend/get_survey_responses.handler
+    events:
+      - http:
+          path: /surveys/{id}/responses
+          method: get
+          cors: true
+  submitSurveyResponse:
+    handler: backend/create_survey_response.handler
+    events:
+      - http:
+          path: /surveys/{id}/responses
+          method: post
+          cors: true
