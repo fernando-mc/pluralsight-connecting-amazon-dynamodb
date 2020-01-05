@@ -1,3 +1,5 @@
+org: fernandomcsea
+app: globomantics-survey-service
 service: globomantics-survey-service
 
 provider:
