@@ -1,0 +1,68 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+
+  "definitions": {
+    "response": {
+      "type": "object",
+      "required": [
+        "question_number",
+        "question_type",
+        "response_value"
+      ],
+      "properties": {
+        "question_number": {
+          "type": "string",
+          "pattern": "^[0-9]+$"
+        },
+        "question_type": {
+          "type": "string",
+          "enum": ["text", "rating"]
+        }
+      },
+      "if": {
+        "properties": { 
+          "question_type": { "const": "text" } 
+        }
+      },
+      "then": { 
+        "properties": { 
+          "response_value": { 
+            "type": "string", 
+            "minLength": 1,
+            "maxLength": 500
+          } 
+        }
+      },
+      "else": {
+        "properties": { 
+          "response_value": { 
+            "type": "string",
+            "pattern": "^(?:1|2|3|4|5|6|7|8|9|10)$" 
+          } 
+        }
+      }
+    }
+  },
+
+  "type": "object",
+
+  "title": "The Root Schema",
+  "required": [
+    "survey_id",
+    "responses"
+  ],
+  "properties": {
+    "survey_id": {
+      "type": "string",
+      "title": "The Survey ID",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+    },
+    "responses": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "title": "The question array holding questions",
+      "items": { "$ref": "#/definitions/response" }
+    }
+  }
+}
