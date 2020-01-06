@@ -20,6 +20,6 @@ def handler(event, context):
     response = {
         "statusCode": 200,
         "headers": {"Access-Control-Allow-Origin":"*"},
-        "body": json.dumps({"response_id" : response_id)
+        "body": json.dumps({"response_id" : response_id})
     }
     return response

@@ -6,6 +6,8 @@ provider:
   name: aws
   runtime: python3.8
   region: us-east-1
+  logs:
+    restApi: true
   environment:
     DYNAMODB_TABLE: ${self:service}-${opt:stage, self:provider.stage}-surveys
   iamRoleStatements:
