@@ -1,5 +1,5 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
 
   "definitions": {
     "response": {
@@ -9,38 +9,41 @@
         "question_type",
         "response_value"
       ],
-      "properties": {
-        "question_number": {
-          "type": "string",
-          "pattern": "^[0-9]+$"
-        },
-        "question_type": {
-          "type": "string",
-          "enum": ["text", "rating"]
+      "oneOf": [
+        {
+          "properties": {
+            "question_number": {
+              "type": "string",
+              "pattern": "^[0-9]+$"
+            },
+            "question_type": {
+              "type": "string",
+              "enum": ["text"]
+            },
+            "response_value": { 
+              "type": "string", 
+              "minLength": 1,
+              "maxLength": 500
+            }
+          }
+        }, 
+        {
+          "properties": {
+            "question_number": {
+              "type": "string",
+              "pattern": "^[0-9]+$"
+            },
+            "question_type": {
+              "type": "string",
+              "enum": ["rating"]
+            },
+            "response_value": { 
+              "type": "string",
+              "pattern": "^(?:1|2|3|4|5|6|7|8|9|10)$" 
+            }
+          }
         }
-      },
-      "if": {
-        "properties": { 
-          "question_type": { "const": "text" } 
-        }
-      },
-      "then": { 
-        "properties": { 
-          "response_value": { 
-            "type": "string", 
-            "minLength": 1,
-            "maxLength": 500
-          } 
-        }
-      },
-      "else": {
-        "properties": { 
-          "response_value": { 
-            "type": "string",
-            "pattern": "^(?:1|2|3|4|5|6|7|8|9|10)$" 
-          } 
-        }
-      }
+      ]
     }
   },
 
