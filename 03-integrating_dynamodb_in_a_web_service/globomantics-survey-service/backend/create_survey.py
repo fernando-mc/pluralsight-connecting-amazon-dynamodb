@@ -13,10 +13,9 @@ def handler(event, context):
     survey_data = json.loads(event['body'])
     survey_id = str(uuid.uuid4())
     survey_data['survey_id'] = survey_id
-    print(event)
-    # result = table.put_item(
-    #     Item=survey_data
-    # )
+    result = table.put_item(
+        Item=survey_data
+    )
     response = {
         "statusCode": 200,
         "headers": {"Access-Control-Allow-Origin":"*"},

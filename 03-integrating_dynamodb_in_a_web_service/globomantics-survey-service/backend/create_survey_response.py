@@ -14,9 +14,9 @@ def handler(event, context):
     response_id = str(uuid.uuid4())
     response_data['response_id'] = response_id
     print(event)
-    # result = table.put_item(
-    #     Item=survey_data
-    # )
+    result = table.put_item(
+        Item=response_data
+    )
     response = {
         "statusCode": 200,
         "headers": {"Access-Control-Allow-Origin":"*"},

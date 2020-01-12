@@ -5,6 +5,11 @@
     "question": {
       "type": "object",
       "properties": {
+        "customer_id": {
+          "type": "string",
+          "title": "The Survey ID",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+        },
         "question_number": {
           "type": "string",
           "pattern": "^[0-9]+$"
@@ -19,7 +24,7 @@
           "maxLength": 500
         }
       },
-      "required": ["question_number", "question_type", "question"]
+      "required": ["customer_id", "question_number", "question_type", "question"]
     }
   },
 
