@@ -1,3 +1,8 @@
+# Postman
+
+You can download Postman for free here:
+https://www.postman.com/downloads/
+
 # AWS CLI
 
 This course relies on the AWS CLI version 1.
