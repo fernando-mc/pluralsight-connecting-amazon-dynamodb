@@ -16,7 +16,7 @@ def create(event, context):
     customer_id = body['customer_id']
     survey_id = str(uuid.uuid4())
     survey_data = body['survey_data']
-    result = table.put_item(
+    table.put_item(
         Item={
             'pk': 'CUSTOMER#' + customer_id,
             'sk': 'SURVEY#' + survey_id,
@@ -25,8 +25,8 @@ def create(event, context):
     )
     return {
         "statusCode": 200,
-        "headers": {"Access-Control-Allow-Origin":"*"},
-        "body": json.dumps({"survey_id" : survey_id})
+        "headers": {"Access-Control-Allow-Origin": "*"},
+        "body": json.dumps({"survey_id": survey_id})
     }
 
 
@@ -39,7 +39,7 @@ def get(event, context):
     )
     return {
         "statusCode": 200,
-        "headers": {"Access-Control-Allow-Origin":"*"},
+        "headers": {"Access-Control-Allow-Origin": "*"},
         "body": json.dumps(response['Items'][0])
     }
 
@@ -54,7 +54,6 @@ def get_all(event, context):
     )
     return {
         "statusCode": 200,
-        "headers": {"Access-Control-Allow-Origin":"*"},
+        "headers": {"Access-Control-Allow-Origin": "*"},
         "body": json.dumps(response['Items'])
     }
-

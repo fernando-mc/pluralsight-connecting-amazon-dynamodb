@@ -25,8 +25,8 @@ def create(event, context):
     )
     return {
         "statusCode": 200,
-        "headers": {"Access-Control-Allow-Origin":"*"},
-        "body": json.dumps({"response_id" : response_id})
+        "headers": {"Access-Control-Allow-Origin": "*"},
+        "body": json.dumps({"response_id": response_id})
     }
 
 
@@ -38,7 +38,7 @@ def get(event, context):
     )
     return {
         "statusCode": 200,
-        "headers": {"Access-Control-Allow-Origin":"*"},
+        "headers": {"Access-Control-Allow-Origin": "*"},
         "body": json.dumps(response['Items'][0])
     }
 
@@ -54,6 +54,6 @@ def get_all(event, context):
     )
     return {
         "statusCode": 200,
-        "headers": {"Access-Control-Allow-Origin":"*"},
+        "headers": {"Access-Control-Allow-Origin": "*"},
         "body": json.dumps(response['Items'])
     }

@@ -1,8 +1,5 @@
 import boto3
-import uuid
 import json
-
-from boto3.dynamodb.conditions import Key
 
 dynamodb = boto3.resource('dynamodb', region_name="us-east-1")
 table = dynamodb.Table('gss')
@@ -20,7 +17,7 @@ def create(event, context):
     table.put_item(Item=item)
     return {
         'statusCode': 200,
-        'headers': {'Access-Control-Allow-Origin':'*'},
+        'headers': {'Access-Control-Allow-Origin': '*'},
         'body': json.dumps(item)
     }
 
@@ -36,6 +33,6 @@ def get(event, body):
     )['Item']
     return {
         'statusCode': 200,
-        'headers': {'Access-Control-Allow-Origin':'*'},
+        'headers': {'Access-Control-Allow-Origin': '*'},
         'body': json.dumps(item)
     }
