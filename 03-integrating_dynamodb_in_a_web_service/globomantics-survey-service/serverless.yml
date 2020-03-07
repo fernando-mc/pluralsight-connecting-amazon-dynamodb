@@ -1,6 +1,4 @@
-org: fernandomcsea
-app: globomantics-survey-service
-service: globomantics-survey-service
+service: gss-test
 
 provider:
   name: aws
@@ -9,7 +7,7 @@ provider:
   logs:
     restApi: true
   environment:
-    DYNAMODB_TABLE: ${self:service}-${opt:stage, self:provider.stage}-surveys
+    DYNAMODB_TABLE: gss
   iamRoleStatements:
     - Effect: Allow
       Action:
@@ -18,47 +16,69 @@ provider:
         - dynamodb:PutItem
         - dynamodb:UpdateItem
         - dynamodb:GetItem
-      Resource: "arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:provider.environment.DYNAMODB_TABLE}"
+      Resource: 
+        - "arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:provider.environment.DYNAMODB_TABLE}"
+        - "arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:provider.environment.DYNAMODB_TABLE}/index/sk-pk-index"
 functions:
-  createSurvey:
-    handler: backend/create_survey.handler
+  createCustomer:
+    handler: backend/customers.create
     events:
       - http:
-          path: /surveys
+          path: /customer
+          method: post
+          cors: true
+  getCustomer:
+    handler: backend/customers.get
+    events:
+      - http:
+          path: /customer/{id}
+          method: get
+          cors: true
+  createSurvey:
+    handler: backend/surveys.create
+    events:
+      - http:
+          path: /survey
           method: post
           cors: true
           request:
             schema:
               application/json: ${file(backend/models/surveySchema.json)}
   getSurvey:
-    handler: backend/get_survey.handler
+    handler: backend/surveys.get
     events:
       - http:
-          path: /surveys/{id}
+          path: /survey/{id}
           method: get
           cors: true
-  getCustomerSurveys:
-    handler: backend/get_customer_surveys.handler
+  getAllCustomerSurveys:
+    handler: backend/surveys.get_all
     events:
       - http:
-          path: /customers/{id}/surveys
+          path: /customer/{id}/surveys
           method: get
           cors: true
-  getSurveyResponses:
-    handler: backend/get_survey_responses.handler
+  createResponse:
+    handler: backend/responses.create
     events:
       - http:
-          path: /surveys/{id}/responses
-          method: get
-          cors: true
-  submitSurveyResponse:
-    handler: backend/create_survey_response.handler
-    events:
-      - http:
-          path: /surveys/{id}/responses
+          path: /response
           method: post
           cors: true
           request:
             schema:
               application/json: ${file(backend/models/responseSchema.json)}
-
+  getResponse:
+    handler: backend/responses.get
+    events:
+      - http:
+          path: /response/{id}
+          method: get
+          cors: true
+  getAllResponses:
+    handler: backend/responses.get_all
+    events:
+      - http:
+          path: /survey/{id}/responses
+          method: get
+          cors: true
